@@ -909,7 +909,7 @@ local function runScene(scene, coords, heading, label, options)
     local sceneDurationMs = getSceneDurationMs(scene, runOptions.durationMs)
     local anchorCoords = runOptions.anchorCoords or coords
     local anchorHeading = runOptions.anchorHeading or heading or 0.0
-    local alignment = buildSceneAlignment(scene, anchorCoords, anchorHeading)
+    local alignment = runOptions.fixedAlignment or buildSceneAlignment(scene, anchorCoords, anchorHeading)
     local sceneOrigin = alignment and alignment.origin or vector3(coords.x, coords.y, coords.z + (scene.deltaZ or 0.0))
     local sceneHeading = alignment and alignment.heading or normalizeHeading(heading or 0.0)
     local objectSpawnCoords = alignment and alignment.anchorCoords or vector3(coords.x, coords.y, coords.z)
@@ -943,13 +943,13 @@ local function runScene(scene, coords, heading, label, options)
             break
         end
 
-        local entity = CreateObjectNoOffset(
+        local entity = CreateObject(
             hash,
             objectSpawnCoords.x,
             objectSpawnCoords.y,
             objectSpawnCoords.z,
-            false,
-            false,
+            true,
+            true,
             false
         )
         if not entity or entity == 0 then
@@ -958,8 +958,10 @@ local function runScene(scene, coords, heading, label, options)
             break
         end
 
+        SetEntityAsMissionEntity(entity, true, true)
+        FreezeEntityPosition(entity, false)
         SetEntityCollision(entity, false, false)
-        SetEntityHeading(entity, alignment and alignment.anchorHeading or heading or 0.0)
+        SetEntityHeading(entity, sceneHeading)
         spawnedObjects[#spawnedObjects + 1] = {
             entity = entity,
             hash = hash,
@@ -990,11 +992,11 @@ local function runScene(scene, coords, heading, label, options)
         0.0,
         sceneHeading,
         2,
+        true,
         false,
-        false,
-        1065353216,
+        -1.0,
         0,
-        1065353216
+        1.0
     )
 
     NetworkAddPedToSynchronisedScene(
@@ -1017,7 +1019,7 @@ local function runScene(scene, coords, heading, label, options)
             scene.animDict,
             spawnedObjects[index].anim,
             1.0,
-            -1.0,
+            1.0,
             1
         )
     end
@@ -1045,6 +1047,15 @@ local function runSceneSequence(sceneOrEntry, coords, heading, label, options)
 
     local runOptions = options or {}
     local totalDurationMs = 0
+    local sequenceAlignment = nil
+
+    if #phases > 1 then
+        sequenceAlignment = buildSceneAlignment(
+            phases[1],
+            runOptions.anchorCoords or coords,
+            runOptions.anchorHeading or heading or 0.0
+        )
+    end
 
     for index = 1, #phases do
         local phaseOptions = FFUtils.DeepCopy(runOptions)
@@ -1053,6 +1064,7 @@ local function runSceneSequence(sceneOrEntry, coords, heading, label, options)
         phaseOptions.clearTasksOnFinish = index == #phases
         phaseOptions.snapTolerance = index == 1 and 0.01 or (runOptions.sequenceSnapTolerance or 0.20)
         phaseOptions.headingTolerance = index == 1 and 2.0 or (runOptions.sequenceHeadingTolerance or 6.0)
+        phaseOptions.fixedAlignment = sequenceAlignment
         if type(runOptions.onPhaseStart) == 'function' then
             runOptions.onPhaseStart(index, phase, #phases, phaseDurationMs)
         end
