@@ -200,15 +200,11 @@ local function getBusyStagePhaseCount(lead)
     end
 
     if lead.busyStage == 'payphone' then
-        return 3
+        return 2
     end
 
     if lead.busyStage == 'drop' then
-        if lead.dropVariant == 'crate' then
-            return 2
-        end
-
-        return 3
+        return 1
     end
 
     return 0

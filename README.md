@@ -16,9 +16,8 @@ Dead-drop jobs that route through a payphone before revealing the final stash.
 - one active drop per player
 - standalone payphone phase
 - drop variants:
-  - `briefcase`
-  - `duffel`
-  - `crate`
+  - `street_handoff`
+  - `counter_package`
 - weighted reward support
 - framework support:
   - `qbox`

@@ -64,9 +64,8 @@ Config.Drops = {
     StartRadius = 3.2,
     CompleteRadius = 4.5,
     SceneDurationMs = {
-        briefcase = 3200,
-        duffel = 3200,
-        crate = 4200,
+        street_handoff = 3200,
+        counter_package = 3200,
     },
     Prompt = '[E] Recover dead drop',
     ProgressLabel = 'Recovering dead drop',
@@ -90,9 +89,8 @@ Config.Drops = {
         },
     },
     Variants = {
-        { name = 'briefcase', weight = 40 },
-        { name = 'duffel', weight = 40 },
-        { name = 'crate', weight = 20 },
+        { name = 'street_handoff', weight = 50 },
+        { name = 'counter_package', weight = 50 },
     },
     Locations = {
         vector4(566.1108, -2262.4010, 6.8774, 180.0),

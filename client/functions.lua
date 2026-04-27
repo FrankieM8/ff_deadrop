@@ -51,19 +51,6 @@ local SceneLibrary = {
                 sequence = true,
                 phases = {
                     {
-                        name = 'enter',
-                        anchorObjectIndex = 1,
-                        deltaZ = -1.0,
-                        animDict = 'anim@scripted@payphone_hits@male@',
-                        pedAnim = 'enter_male',
-                        objects = {
-                            {
-                                anim = 'enter_phone',
-                                model = 'sf_prop_sf_phonebox_01b_s',
-                            },
-                        },
-                    },
-                    {
                         name = 'base',
                         anchorObjectIndex = 1,
                         deltaZ = -1.0,
@@ -94,151 +81,42 @@ local SceneLibrary = {
         },
     },
     drops = {
-        briefcase = {
-            sequence = true,
-            clueModel = 'hei_p_attache_case_01b_s',
-            phases = {
-                {
-                    name = 'enter',
-                    anchorObjectIndex = 1,
-                    deltaZ = -0.95,
-                    animDict = 'anim@heists@money_grab@briefcase',
-                    pedAnim = 'enter',
-                    objects = {
-                        {
-                            anim = 'enter_case',
-                            model = 'hei_p_attache_case_01b_s',
-                        },
-                    },
-                },
-                {
-                    name = 'loop',
-                    anchorObjectIndex = 1,
-                    deltaZ = -0.95,
-                    animDict = 'anim@heists@money_grab@briefcase',
-                    pedAnim = 'loop',
-                    objects = {
-                        {
-                            anim = 'loop_case',
-                            model = 'hei_p_attache_case_01b_s',
-                        },
-                    },
-                },
-                {
-                    name = 'exit',
-                    anchorObjectIndex = 1,
-                    deltaZ = -0.95,
-                    animDict = 'anim@heists@money_grab@briefcase',
-                    pedAnim = 'exit',
-                    objects = {
-                        {
-                            anim = 'exit_case',
-                            model = 'hei_p_attache_case_01b_s',
-                        },
-                    },
-                },
-            },
-        },
-        duffel = {
-            sequence = true,
+        street_handoff = {
             clueModel = 'p_ld_heist_bag_s_1',
-            phases = {
+            anchorObjectIndex = 2,
+            deltaZ = -1.0,
+            animDict = 'tunf_drp_bag-0',
+            pedAnim = 'mp_m_freemode_01_dual-0',
+            secondaryActors = {
                 {
-                    name = 'enter',
-                    anchorObjectIndex = 1,
-                    deltaZ = -1.0,
-                    animDict = 'anim@heists@money_grab@duffel',
-                    pedAnim = 'enter',
-                    objects = {
-                        {
-                            anim = 'enter_bag',
-                            model = 'p_ld_heist_bag_s_1',
-                        },
-                        {
-                            anim = 'enter_strap',
-                            model = 'p_csh_strap_01_s',
-                        },
-                    },
+                    model = 'a_m_y_business_02',
+                    anim = 'a_m_y_business_02_dual-0',
+                },
+            },
+            objects = {
+                {
+                    anim = 'p_cash_envelope_01_s-0',
+                    model = 'p_cash_envelope_01_s',
                 },
                 {
-                    name = 'loop',
-                    anchorObjectIndex = 1,
-                    deltaZ = -1.0,
-                    animDict = 'anim@heists@money_grab@duffel',
-                    pedAnim = 'loop',
-                    objects = {
-                        {
-                            anim = 'loop_bag',
-                            model = 'p_ld_heist_bag_s_1',
-                        },
-                        {
-                            anim = 'loop_strap',
-                            model = 'p_csh_strap_01_s',
-                        },
-                    },
-                },
-                {
-                    name = 'exit',
-                    anchorObjectIndex = 1,
-                    deltaZ = -1.0,
-                    animDict = 'anim@heists@money_grab@duffel',
-                    pedAnim = 'exit',
-                    objects = {
-                        {
-                            anim = 'exit_bag',
-                            model = 'p_ld_heist_bag_s_1',
-                        },
-                        {
-                            anim = 'exit_strap',
-                            model = 'p_csh_strap_01_s',
-                        },
-                    },
+                    anim = 'p_ld_heist_bag_s_1-0',
+                    model = 'p_ld_heist_bag_s_1',
                 },
             },
         },
-        crate = {
-            sequence = true,
-            clueModel = 'xm3_prop_xm3_crate_01a',
-            phases = {
+        counter_package = {
+            clueModel = 'p_cash_envelope_01_s',
+            anchorMode = 'ped',
+            deltaZ = 0.0,
+            animDict = 'mp_cop_armoury',
+            pedAnim = 'package_from_counter',
+            secondaryActors = {
                 {
-                    name = 'loot',
-                    anchorObjectIndex = 2,
-                    deltaZ = -1.0,
-                    animDict = 'anim@scripted@player@mission@trn_ig1_loot@male@',
-                    pedAnim = 'loot',
-                    objects = {
-                        {
-                            anim = 'loot_can',
-                            model = 'xm3_prop_xm3_can_hl_01a',
-                        },
-                        {
-                            anim = 'loot_crate',
-                            model = 'xm3_prop_xm3_crate_01a',
-                        },
-                        {
-                            anim = 'loot_crowbar',
-                            model = 'w_me_crowbar',
-                        },
-                    },
-                },
-                {
-                    name = 'empty',
-                    anchorObjectIndex = 1,
-                    deltaZ = -1.0,
-                    animDict = 'anim@scripted@player@mission@trn_ig2_empty@male@',
-                    pedAnim = 'empty',
-                    objects = {
-                        {
-                            anim = 'empty_crate',
-                            model = 'xm3_prop_xm3_crate_01a',
-                        },
-                        {
-                            anim = 'empty_crowbar',
-                            model = 'w_me_crowbar',
-                        },
-                    },
+                    model = 'a_m_y_business_02',
+                    anim = 'package_from_counter_cop',
                 },
             },
+            objects = {},
         },
     },
 }
@@ -434,7 +312,7 @@ local function getScenePhaseByIndex(sceneOrEntry, phaseIndex)
 end
 
 local function getDropScene(variant)
-    return SceneLibrary.drops[variant] or SceneLibrary.drops.briefcase
+    return SceneLibrary.drops[variant] or SceneLibrary.drops.street_handoff
 end
 
 local getRawSceneDurationMs
@@ -547,7 +425,7 @@ local function buildSceneDescriptor(stage, payload)
     end
 
     if stage == 'drop' then
-        return ('variant=%s'):format(tostring(payload and payload.variant or 'briefcase'))
+        return ('variant=%s'):format(tostring(payload and payload.variant or 'street_handoff'))
     end
 
     return 'unknown'
@@ -589,7 +467,7 @@ local function reportSceneProfile(stage, sceneOrEntry, payload)
         if stage == 'payphone' then
             suggestedLine = ('Config.Payphones.SceneDurationMs = %s,'):format(measuredMs)
         elseif stage == 'drop' then
-            suggestedLine = ('%s = %s,'):format(tostring(payload and payload.variant or 'briefcase'), measuredMs)
+            suggestedLine = ('%s = %s,'):format(tostring(payload and payload.variant or 'street_handoff'), measuredMs)
         end
 
         if suggestedLine then
@@ -657,7 +535,7 @@ local function reportSceneProfile(stage, sceneOrEntry, payload)
     if stage == 'payphone' then
         suggestedLine = ('Config.Payphones.SceneDurationMs = %s,'):format(totalMeasuredMs)
     elseif stage == 'drop' then
-        suggestedLine = ('%s = %s,'):format(tostring(payload and payload.variant or 'briefcase'), totalMeasuredMs)
+        suggestedLine = ('%s = %s,'):format(tostring(payload and payload.variant or 'street_handoff'), totalMeasuredMs)
     end
 
     if suggestedLine then
@@ -721,13 +599,28 @@ local function getAnchorObject(scene)
     return nil
 end
 
+local function getAnchorAnim(scene)
+    if not scene then
+        return nil
+    end
+
+    if scene.anchorMode ~= 'ped' then
+        local anchorObject = getAnchorObject(scene)
+        if anchorObject and anchorObject.anim then
+            return anchorObject.anim
+        end
+    end
+
+    return scene.pedAnim
+end
+
 local function buildSceneAlignment(scene, anchorCoords, anchorHeading)
     if not scene or not anchorCoords or not scene.animDict or not scene.pedAnim then
         return nil
     end
 
-    local anchorObject = getAnchorObject(scene)
-    if not anchorObject or not anchorObject.anim then
+    local anchorAnim = getAnchorAnim(scene)
+    if not anchorAnim then
         return nil
     end
 
@@ -745,7 +638,7 @@ local function buildSceneAlignment(scene, anchorCoords, anchorHeading)
 
     local anchorRotation = GetAnimInitialOffsetRotation(
         scene.animDict,
-        anchorObject.anim,
+        anchorAnim,
         sceneOrigin.x,
         sceneOrigin.y,
         sceneOrigin.z,
@@ -765,7 +658,7 @@ local function buildSceneAlignment(scene, anchorCoords, anchorHeading)
     for _ = 1, 2 do
         resolvedAnchorCoords = GetAnimInitialOffsetPosition(
             scene.animDict,
-            anchorObject.anim,
+            anchorAnim,
             sceneOrigin.x,
             sceneOrigin.y,
             sceneOrigin.z,
@@ -798,7 +691,7 @@ local function buildSceneAlignment(scene, anchorCoords, anchorHeading)
 
     resolvedAnchorCoords = GetAnimInitialOffsetPosition(
         scene.animDict,
-        anchorObject.anim,
+        anchorAnim,
         sceneOrigin.x,
         sceneOrigin.y,
         sceneOrigin.z,
@@ -855,6 +748,46 @@ local function buildSceneAlignment(scene, anchorCoords, anchorHeading)
         )
     end
 
+    local secondaryActorAlignments = {}
+    for index = 1, #(scene.secondaryActors or {}) do
+        local actorEntry = scene.secondaryActors[index]
+        if actorEntry and actorEntry.anim then
+            local actorCoords = GetAnimInitialOffsetPosition(
+                scene.animDict,
+                actorEntry.anim,
+                sceneOrigin.x,
+                sceneOrigin.y,
+                sceneOrigin.z,
+                0.0,
+                0.0,
+                sceneHeading,
+                0,
+                2
+            )
+            local actorRotation = GetAnimInitialOffsetRotation(
+                scene.animDict,
+                actorEntry.anim,
+                sceneOrigin.x,
+                sceneOrigin.y,
+                sceneOrigin.z,
+                0.0,
+                0.0,
+                sceneHeading,
+                0,
+                2
+            )
+
+            if actorCoords then
+                secondaryActorAlignments[#secondaryActorAlignments + 1] = {
+                    model = actorEntry.model,
+                    anim = actorEntry.anim,
+                    coords = actorCoords,
+                    heading = normalizeHeading((actorRotation and actorRotation.z) or sceneHeading),
+                }
+            end
+        end
+    end
+
     return {
         origin = sceneOrigin,
         heading = sceneHeading,
@@ -863,6 +796,7 @@ local function buildSceneAlignment(scene, anchorCoords, anchorHeading)
         anchorCoords = desiredAnchorCoords,
         anchorHeading = desiredAnchorHeading,
         anchorError = anchorError,
+        secondaryActors = secondaryActorAlignments,
     }
 end
 
@@ -896,6 +830,45 @@ local function preparePedForSceneAlignment(alignment, ped, snapTolerance, headin
     end
 
     return true
+end
+
+local function spawnSceneActor(actorEntry)
+    if not actorEntry or not actorEntry.model or not actorEntry.coords then
+        return nil
+    end
+
+    local hash = loadModel(actorEntry.model)
+    if hash == 0 then
+        return nil
+    end
+
+    local ped = CreatePed(
+        4,
+        hash,
+        actorEntry.coords.x,
+        actorEntry.coords.y,
+        actorEntry.coords.z,
+        actorEntry.heading or 0.0,
+        false,
+        false
+    )
+    if not ped or ped == 0 then
+        SetModelAsNoLongerNeeded(hash)
+        return nil
+    end
+
+    SetEntityAsMissionEntity(ped, true, true)
+    SetEntityCollision(ped, false, false)
+    SetEntityInvincible(ped, true)
+    SetBlockingOfNonTemporaryEvents(ped, true)
+    FreezeEntityPosition(ped, false)
+    SetCurrentPedWeapon(ped, `WEAPON_UNARMED`, true)
+    SetModelAsNoLongerNeeded(hash)
+
+    return {
+        entity = ped,
+        anim = actorEntry.anim,
+    }
 end
 
 local function runScene(scene, coords, heading, label, options)
@@ -933,6 +906,7 @@ local function runScene(scene, coords, heading, label, options)
     end
 
     local spawnedObjects = {}
+    local spawnedActors = {}
     local objectLoadFailed = false
 
     for index = 1, #(scene.objects or {}) do
@@ -979,7 +953,34 @@ local function runScene(scene, coords, heading, label, options)
         return runFallbackProgress(label, sceneDurationMs)
     end
 
+    local actorLoadFailed = false
+    for index = 1, #((alignment and alignment.secondaryActors) or {}) do
+        local spawnedActor = spawnSceneActor(alignment.secondaryActors[index])
+        if not spawnedActor then
+            actorLoadFailed = true
+            break
+        end
+
+        spawnedActors[#spawnedActors + 1] = spawnedActor
+    end
+
+    if actorLoadFailed then
+        for index = 1, #spawnedActors do
+            DropClientRemoveEntity(spawnedActors[index].entity)
+        end
+        for index = 1, #spawnedObjects do
+            DropClientRemoveEntity(spawnedObjects[index].entity)
+            SetModelAsNoLongerNeeded(spawnedObjects[index].hash)
+        end
+
+        unloadAnimDict(scene.animDict)
+        return runFallbackProgress(label, sceneDurationMs)
+    end
+
     allowRemoteSyncedSceneEntity(ped)
+    for index = 1, #spawnedActors do
+        allowRemoteSyncedSceneEntity(spawnedActors[index].entity)
+    end
     for index = 1, #spawnedObjects do
         allowRemoteSyncedSceneEntity(spawnedObjects[index].entity)
     end
@@ -1012,6 +1013,21 @@ local function runScene(scene, coords, heading, label, options)
         0
     )
 
+    for index = 1, #spawnedActors do
+        NetworkAddPedToSynchronisedScene(
+            spawnedActors[index].entity,
+            sceneId,
+            scene.animDict,
+            spawnedActors[index].anim,
+            2.0,
+            -4.0,
+            1,
+            0,
+            1148846080,
+            0
+        )
+    end
+
     for index = 1, #spawnedObjects do
         NetworkAddEntityToSynchronisedScene(
             spawnedObjects[index].entity,
@@ -1030,6 +1046,9 @@ local function runScene(scene, coords, heading, label, options)
         ClearPedTasks(ped)
     end
 
+    for index = 1, #spawnedActors do
+        DropClientRemoveEntity(spawnedActors[index].entity)
+    end
     for index = 1, #spawnedObjects do
         DropClientRemoveEntity(spawnedObjects[index].entity)
         SetModelAsNoLongerNeeded(spawnedObjects[index].hash)
@@ -1096,7 +1115,7 @@ function DropClientRunPayphoneScene(payload, onPhaseStart)
 end
 
 function DropClientRunDropScene(payload, onPhaseStart)
-    local sceneEntry = getDropScene(payload and payload.variant or 'briefcase')
+    local sceneEntry = getDropScene(payload and payload.variant or 'street_handoff')
     reportSceneProfile('drop', sceneEntry, payload)
     return runSceneSequence(sceneEntry, payload.coords, payload.heading or 0.0, Config.Drops.ProgressLabel or 'Recovering dead drop', {
         anchorCoords = payload and payload.anchorCoords,
@@ -1132,7 +1151,7 @@ function DropClientRunRemotePayphoneScene(serverId, ped, payload)
 end
 
 function DropClientRunRemoteDropScene(serverId, ped, payload)
-    local sceneEntry = getDropScene(payload and payload.variant or 'briefcase')
+    local sceneEntry = getDropScene(payload and payload.variant or 'street_handoff')
     local phaseIndex = math.floor(tonumber(payload and payload.phaseIndex) or 0)
     if phaseIndex > 0 then
         local phase = getScenePhaseByIndex(sceneEntry, phaseIndex)
